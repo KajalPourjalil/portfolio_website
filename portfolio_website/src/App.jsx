@@ -1,16 +1,15 @@
-import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './Component/Navbar.jsx'
-
+import { useState } from "react";
+// import "./App.css";
+import Hello from './Component/Navbar.jsx'
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-   <div className='App'>
-
-   </div>
-  )
+    <div className="App">
+      <Hello />
+      <h1>hi</h1>
+    </div>
+  );
 }
 
-export default App
+export default App;
