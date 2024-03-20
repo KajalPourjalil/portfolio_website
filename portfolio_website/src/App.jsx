@@ -1,13 +1,11 @@
 import { useState } from "react";
-// import "./App.css";
-import Hello from './Component/Navbar.jsx'
-// import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import { NavBar } from "./Component/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Hello />
-      <h1>hi</h1>
+      <NavBar/>
     </div>
   );
 }
