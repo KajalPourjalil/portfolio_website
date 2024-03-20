@@ -33,7 +33,6 @@ export const NavBar = () => {
       <Container>
         <Navbar.Brand href="#home">
           <img src={logo} alt="logo" />
-          React-Bootstrap
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
