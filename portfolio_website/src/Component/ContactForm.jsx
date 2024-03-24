@@ -16,6 +16,33 @@ export const ContactForm = () => {
   const [buttonText, setButtonText] = useState("Send");
   const [status, setStatus] = useState({});
 
+  const onFormUpdate = (category, value) => {
+    setFormDetails({
+      ...formDetails,
+      [category]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setButtonText("Sending...");
+    let response = await fetch("https://localhost:5000/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/json;charset=utf-8",
+      },
+      body: JSON.stringity(formDetails),
+    });
+    setButtonText("Send");
+    let result = response.json();
+    setFormDetails(formInitialDetails);
+    if (result.code === 200) {
+      setStatus({ success: true, message: "Message sent successfully" });
+    } else {
+      setStatus({ success: false, message: "Sending failed, try again" });
+    }
+  };
+
   return (
     <section className="contact" id="connect">
       <Container>
@@ -25,20 +52,22 @@ export const ContactForm = () => {
           </Col>
           <Col md={6}>
             <h2>Get In Touch</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <Row>
                 <Col sm={6} className="px-1">
                   <input
                     type="text"
                     value={formDetails.firstName}
                     placeholder="First Name"
-                  ></input>
+                    onChange={(e) => onFormUpdate("firstName", e.target.value)}
+                  />
                 </Col>
                 <Col sm={6} className="px-1">
                   <input
                     type="text"
-                    value={formDetails.lasttName}
+                    value={formDetails.lastName}
                     placeholder="Last Name"
+                    onChange={(e) => onFormUpdate("lastName", e.target.value)}
                   ></input>
                 </Col>
                 <Col sm={6} className="px-1">
@@ -46,6 +75,7 @@ export const ContactForm = () => {
                     type="text"
                     value={formDetails.email}
                     placeholder="Email"
+                    onChange={(e) => onFormUpdate("email", e.target.value)}
                   ></input>
                 </Col>
                 <Col sm={6} className="px-1">
@@ -53,15 +83,31 @@ export const ContactForm = () => {
                     type="text"
                     value={formDetails.phone}
                     placeholder="Phone"
+                    onChange={(e) => onFormUpdate("phone", e.target.value)}
                   ></input>
                 </Col>
                 <Col md={6} lg={12} className="px-1">
-                  <input
-                    type="text"
+                  <textarea
+                    row="6"
                     value={formDetails.message}
                     placeholder="Message"
-                  ></input>
+                    onChange={(e) => onFormUpdate("message", e.target.value)}
+                  ></textarea>
+                  <button type="submit">
+                    <span>{buttonText}</span>
+                  </button>
                 </Col>
+                {status.message && (
+                  <Col>
+                    <p
+                      className={
+                        status.success === false ? "danger" : "success"
+                      }
+                    >
+                      {status.message}
+                    </p>
+                  </Col>
+                )}
               </Row>
             </form>
           </Col>
