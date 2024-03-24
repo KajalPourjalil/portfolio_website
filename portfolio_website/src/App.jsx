@@ -5,6 +5,8 @@ import { Banner } from "./Component/Banner"
 import { Skills } from "./Component/Skills";
 import { Projects } from './Component/Projects';
 import { ContactForm } from "./Component/ContactForm";
+import { Newsletter } from "./Component/Newsletter";
+import { Footer } from "./Component/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -16,6 +18,8 @@ function App() {
       <Skills/>
       <Projects/>
       <ContactForm />
+      <Newsletter/>
+      <Footer/>
     </div>
   );
 }
