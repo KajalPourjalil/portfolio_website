@@ -5,39 +5,41 @@ import colorSharp2 from "../assets/img/color-sharp2.png";
 import proImg1 from "../assets/img/project-img1.png";
 import proImg2 from "../assets/img/project-img2.png";
 import proImg3 from "../assets/img/project-img3.png";
+import "animate.css";
+import TrackVisibility from "react-on-screen";
 
 export const Projects = () => {
   const projects = [
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: proImg1
+      imgUrl: proImg1,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: proImg2
+      imgUrl: proImg2,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: proImg3
+      imgUrl: proImg3,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: proImg1
+      imgUrl: proImg1,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: proImg2
+      imgUrl: proImg2,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: proImg3
-    }
+      imgUrl: proImg3,
+    },
   ];
 
   return (
@@ -45,10 +47,24 @@ export const Projects = () => {
       <Container>
         <Row>
           <Col>
-            <h2>Projects</h2>
-            <p>Lorem ipsum</p>
+            <TrackVisibility>
+              {({ isVisible }) => (
+                <div
+                  className={
+                    isVisible ? "animate__animated animate__fadeIn" : ""
+                  }
+                >
+                  <h2>Projects</h2>
+                  <p>Lorem ipsum</p>
+                </div>
+              )}
+            </TrackVisibility>
             <Tab.Container id="projects-tabs" defaultActiveKey="first">
-              <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+              <Nav
+                variant="pills"
+                className="nav-pills mb-5 justify-content-center align-items-center"
+                id="pills-tab"
+              >
                 <Nav.Item>
                   <Nav.Link eventKey="first">Tab One</Nav.Link>
                 </Nav.Item>
